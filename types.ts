@@ -1,12 +1,18 @@
-// Fix: Added type definitions for various data structures used in the application.
 import React from 'react';
 
 export interface Product {
   id: number;
+  slug: string;
   name: string;
   description: string;
   pricePerTon: string;
   imageUrl: string;
+  gallery: string[];
+  origin: string;
+  specifications: { key: string; value: string }[];
+  packaging: string[];
+  shippingTerms: string;
+  harvestSeason: string;
 }
 
 export interface BlogPost {

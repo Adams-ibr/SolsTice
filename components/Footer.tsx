@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NAV_LINKS } from '../constants';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const SocialIcon: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
   <a href={href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-gold transition-colors">
@@ -9,11 +10,30 @@ const SocialIcon: React.FC<{ href: string; children: React.ReactNode }> = ({ hre
 );
 
 const Footer: React.FC = () => {
-  const handleNewsletterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [isError, setIsError] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert('Thank you for subscribing to our newsletter!');
-    const form = e.target as HTMLFormElement;
-    form.reset();
+    setIsSubmitting(true);
+    setSubmitMessage('');
+    setIsError(false);
+
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    // Simulate a random success/error
+    if (Math.random() > 0.1) { // 90% success rate
+        setSubmitMessage('Thank you for subscribing!');
+        (e.target as HTMLFormElement).reset();
+    } else {
+        setSubmitMessage('Something went wrong. Please try again.');
+        setIsError(true);
+    }
+
+    setIsSubmitting(false);
+    setTimeout(() => setSubmitMessage(''), 5000);
   };
 
   return (
@@ -59,18 +79,38 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold text-brand-gold mb-4">Stay Updated</h3>
             <p className="text-gray-300 mb-4">Get the latest market insights and news from SolsTice.</p>
             <form onSubmit={handleNewsletterSubmit}>
-              <div className="flex flex-col sm:flex-row gap-2">
-                <input
-                  type="email"
-                  placeholder="Your Email Address"
-                  aria-label="Email for newsletter"
-                  className="w-full px-4 py-2 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-gold"
-                  required
-                />
-                <button type="submit" className="bg-brand-gold text-white font-bold py-2 px-4 rounded-md hover:bg-opacity-90 transition-colors">
-                  Subscribe
-                </button>
-              </div>
+              <fieldset disabled={isSubmitting}>
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <input
+                    type="email"
+                    placeholder="Your Email Address"
+                    aria-label="Email for newsletter"
+                    className="w-full px-4 py-2 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-gold disabled:opacity-50"
+                    required
+                  />
+                  <motion.button 
+                    type="submit" 
+                    className="bg-brand-gold text-white font-bold py-2 px-4 rounded-md hover:bg-opacity-90 transition-colors disabled:bg-opacity-50 disabled:cursor-not-allowed"
+                    whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+                    whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+                  >
+                    {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                  </motion.button>
+                </div>
+              </fieldset>
+              <AnimatePresence>
+                {submitMessage && (
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className={`mt-3 text-sm font-medium text-center sm:text-left ${isError ? 'text-red-400' : 'text-green-300'}`}
+                    aria-live="polite"
+                  >
+                    {submitMessage}
+                  </motion.p>
+                )}
+              </AnimatePresence>
             </form>
             <div className="flex space-x-4 mt-6">
                 <SocialIcon href="#"><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" /></svg></SocialIcon>
