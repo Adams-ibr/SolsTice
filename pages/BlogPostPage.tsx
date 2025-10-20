@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { BLOG_POSTS } from '../constants';
 
 const BlogPostPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = BLOG_POSTS.find(p => p.slug === slug);
+
+  useEffect(() => {
+    const originalTitle = document.title;
+    const metaDescriptionTag = document.querySelector('meta[name="description"]');
+    const originalDescription = metaDescriptionTag ? metaDescriptionTag.getAttribute('content') : '';
+
+    if (post) {
+      document.title = `${post.title} | SolsTice Agro Exports`;
+      if (metaDescriptionTag) {
+        metaDescriptionTag.setAttribute('content', post.excerpt);
+      }
+    }
+
+    return () => {
+      document.title = originalTitle;
+      if (metaDescriptionTag && originalDescription) {
+        metaDescriptionTag.setAttribute('content', originalDescription);
+      }
+    };
+  }, [post]);
 
   if (!post) {
     return (
@@ -30,17 +50,14 @@ const BlogPostPage: React.FC = () => {
       <section className="py-12">
         <div className="container mx-auto px-4 max-w-4xl">
             <img src={post.imageUrl} alt={post.title} className="w-full h-auto max-h-[500px] object-cover rounded-lg shadow-lg mb-8" />
-            <div className="prose lg:prose-xl max-w-none mx-auto text-center p-8 bg-gray-100 rounded-lg">
-                <h2 className="text-2xl font-semibold text-gray-700">Full Article Coming Soon!</h2>
-                <p className="mt-4 text-gray-600">
-                    We are busy preparing this insightful article for you. Please check back later for the full content.
-                </p>
-                <p className="mt-2 text-gray-600">
-                    The post will delve deeper into <span className="font-semibold">{post.title}</span>.
-                </p>
-                <Link to="/blog" className="mt-8 inline-block bg-brand-gold text-white font-bold py-3 px-6 rounded-md hover:bg-opacity-90 transition-colors">
-                    &larr; Back to All Insights
-                </Link>
+            <div className="prose lg:prose-xl max-w-none mx-auto text-gray-700">
+                <p className="text-lg italic text-gray-600 border-l-4 border-brand-gold pl-4 mb-8">{post.excerpt}</p>
+                {post.content}
+                <div className="mt-12 text-center">
+                    <Link to="/blog" className="inline-block bg-brand-gold text-white font-bold py-3 px-6 rounded-md hover:bg-opacity-90 transition-colors no-underline">
+                        &larr; Back to All Insights
+                    </Link>
+                </div>
             </div>
         </div>
       </section>

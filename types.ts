@@ -14,6 +14,7 @@ export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
+  content: React.ReactNode;
   imageUrl: string;
   author: string;
   publishDate: string;

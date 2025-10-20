@@ -41,6 +41,24 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* Video Introduction Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-brand-green mb-12">Connecting Continents, Cultivating Trust</h2>
+          <div className="max-w-4xl mx-auto">
+            <video
+              className="w-full rounded-lg shadow-2xl"
+              controls
+              poster="https://picsum.photos/seed/video-poster/1280/720"
+              preload="metadata"
+            >
+              <source src="https://static.videezy.com/system/resources/previews/000/045/222/original/4K_20.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Products Section */}
       <section className="py-20 bg-brand-light">
         <div className="container mx-auto px-4">
