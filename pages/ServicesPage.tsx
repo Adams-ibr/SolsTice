@@ -51,7 +51,7 @@ const ServicesPage: React.FC = () => {
                 variants={itemVariants}
               >
                 <div className="flex-shrink-0">
-                  <service.icon className="h-12 w-12 text-brand-gold" />
+                  {service.icon}
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-brand-green dark:text-gray-100 mb-2">{service.name}</h3>
