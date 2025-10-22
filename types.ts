@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 // FIX: Moved Lottie player type definitions from Preloader.tsx to fix global JSX type issues.
 // This ensures the augmentation of JSX.IntrinsicElements happens in a global context
@@ -10,9 +10,10 @@ export interface LottiePlayerElement extends HTMLElement {
 // Augmenting the global JSX namespace to make the `lottie-player` custom element available in JSX.
 declare global {
   namespace JSX {
-    // FIX: Removed `extends React.JSX.IntrinsicElements` to correctly augment the
-    // global interface via declaration merging. Using `extends` was incorrectly
-    // replacing the original `IntrinsicElements` definition.
+    // FIX: The previous declaration of IntrinsicElements was overwriting React's default
+    // JSX elements instead of augmenting them. By correctly declaring the interface for
+    // augmentation, TypeScript's declaration merging now adds 'lottie-player' to the
+    // existing IntrinsicElements without removing standard HTML tags like 'div', 'p', etc.
     interface IntrinsicElements {
       'lottie-player': React.DetailedHTMLProps<React.HTMLAttributes<LottiePlayerElement> & {
         src?: string;

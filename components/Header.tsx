@@ -26,19 +26,27 @@ const Header: React.FC = () => {
                 <Link to="/" className={`text-2xl font-bold transition-colors ${isScrolled ? 'text-brand-green' : 'text-white'}`}>
                     Sols<span className="text-brand-gold">T</span>ice
                 </Link>
-                <nav className="hidden md:flex items-center space-x-8">
-                    {NAV_LINKS.map(link => (
-                        <NavLink 
-                            key={link.name} 
-                            to={link.path}
-                            className={({ isActive }) => 
-                                `font-medium transition-colors ${isScrolled ? 'text-gray-700 hover:text-brand-green' : 'text-white hover:text-brand-gold'} ${isActive ? (isScrolled ? 'text-brand-green' : 'text-brand-gold') : ''}`
-                            }
-                        >
-                            {link.name}
-                        </NavLink>
-                    ))}
-                </nav>
+                <div className="hidden md:flex items-center">
+                    <nav className="flex items-center space-x-8">
+                        {NAV_LINKS.map(link => (
+                            <NavLink 
+                                key={link.name} 
+                                to={link.path}
+                                className={({ isActive }) => 
+                                    `font-medium transition-colors ${isScrolled ? 'text-gray-700 hover:text-brand-green' : 'text-white hover:text-brand-gold'} ${isActive ? (isScrolled ? 'text-brand-green' : 'text-brand-gold') : ''}`
+                                }
+                            >
+                                {link.name}
+                            </NavLink>
+                        ))}
+                    </nav>
+                    <Link
+                        to="/contact"
+                        className="ml-8 bg-brand-gold text-white font-bold py-2 px-5 rounded-full text-sm hover:bg-yellow-600 transition-all transform hover:scale-105 shadow-md"
+                    >
+                        Get Started
+                    </Link>
+                </div>
                 <div className="md:hidden">
                     <button onClick={() => setIsOpen(!isOpen)} className={`transition-colors ${isScrolled ? 'text-brand-green' : 'text-white'}`}>
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}></path></svg>
@@ -65,6 +73,12 @@ const Header: React.FC = () => {
                                     {link.name}
                                 </NavLink>
                             ))}
+                            <Link 
+                                to="/contact" 
+                                className="mt-4 bg-brand-gold text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-600 transition-transform transform hover:scale-105"
+                            >
+                                Get Started
+                            </Link>
                         </nav>
                     </motion.div>
                 )}
