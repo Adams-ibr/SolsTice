@@ -11,7 +11,7 @@ const ContactPage: React.FC = () => {
   return (
     <AnimatedPage>
       <AnimatedSection>
-        <section className="bg-brand-green text-white py-20">
+        <section className="bg-brand-green text-white pt-32 pb-20">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl font-bold">Get in Touch</h1>
             <p className="text-xl mt-4 max-w-3xl mx-auto">We're here to answer your questions and help you with your sourcing needs.</p>
@@ -46,9 +46,9 @@ const ContactPage: React.FC = () => {
           <div className="space-y-8">
             <SectionTitle>Contact Information</SectionTitle>
             <div className="space-y-4 text-lg">
-              <p><strong>Address:</strong> 123 Commerce Way, Lagos, Nigeria</p>
-              <p><strong>Phone:</strong> <a href="tel:+2348012345678" className="text-brand-green hover:underline dark:text-brand-gold">
-+234 801 234 5678
+              <p><strong>Address:</strong> 174 Emir’s Palace Road, Kano Municipal, Nigeria</p>
+              <p><strong>Phone:</strong> <a href="tel:+2348052444482" className="text-brand-green hover:underline dark:text-brand-gold">
++234 805 244 4482
 </a></p>
               <p><strong>Email:</strong> <a href="mailto:info@solsticeagro.com" className="text-brand-green hover:underline dark:text-brand-gold">
 info@solsticeagro.com
@@ -56,7 +56,7 @@ info@solsticeagro.com
             </div>
              <div className="h-80 bg-gray-200 rounded-lg overflow-hidden">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.4633355323!2d3.119143394531241!3d6.548035599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1689252627043!5m2!1sen!2sng"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3932.798150772744!2d8.51520131479177!3d11.995038991500366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11ae81b37651082d%3A0x82b8f6a6c2f9d37c!2sEmir's%20Palace%20Rd%2C%20Kano!5e0!3m2!1sen!2sng!4v1698000000000!5m2!1sen!2sng"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}

@@ -29,7 +29,7 @@ const ProductsPage: React.FC = () => {
   return (
     <AnimatedPage>
       <AnimatedSection>
-        <section className="bg-brand-green text-white py-20">
+        <section className="bg-brand-green text-white pt-32 pb-20">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl font-bold">Our Agricultural Commodities</h1>
             <p className="text-xl mt-4 max-w-3xl mx-auto">Discover our range of premium, ethically sourced products from Nigeria.</p>

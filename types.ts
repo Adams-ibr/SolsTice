@@ -1,8 +1,11 @@
-// FIX: Changed the React import to `import * as React from 'react'`. The default import `import React from 'react'`
-// was causing TypeScript to overwrite the global JSX namespace, leading to errors where
-// standard elements like 'div' were not recognized. The namespace import ensures correct
-// module augmentation.
-import * as React from 'react';
+// FIX: Changed to named type imports from 'react' to be more explicit and avoid
+// potential module resolution issues that could overwrite the global JSX namespace.
+import type { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
+
+// FIX: Adding a side-effect import of 'react' to ensure its global JSX namespace is
+// loaded before we attempt to augment it. This resolves the issue where `JSX.IntrinsicElements`
+// was being overwritten instead of extended.
+import 'react';
 
 // FIX: Moved Lottie player type definitions from Preloader.tsx to fix global JSX type issues.
 // This ensures the augmentation of JSX.IntrinsicElements happens in a global context
@@ -19,7 +22,7 @@ declare global {
     // augmentation, TypeScript's declaration merging now adds 'lottie-player' to the
     // existing IntrinsicElements without removing standard HTML tags like 'div', 'p', etc.
     interface IntrinsicElements {
-      'lottie-player': React.DetailedHTMLProps<React.HTMLAttributes<LottiePlayerElement> & {
+      'lottie-player': DetailedHTMLProps<HTMLAttributes<LottiePlayerElement> & {
         src?: string;
         background?: string;
         speed?: string;
@@ -51,7 +54,7 @@ export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
-  content: React.ReactNode;
+  content: ReactNode;
   imageUrl: string;
   author: string;
   publishDate: string;
@@ -71,7 +74,7 @@ export interface Service {
     id: number;
     name: string;
     description: string;
-    icon: React.ReactNode;
+    icon: ReactNode;
 }
 
 export interface Testimonial {

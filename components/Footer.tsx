@@ -27,8 +27,8 @@ const Footer: React.FC = () => {
                         <h4 className="font-semibold text-lg mb-4">Contact Us</h4>
                         <ul className="space-y-2 text-gray-400">
                             <li><a href="mailto:info@solsticeagro.com" className="hover:text-brand-gold">info@solsticeagro.com</a></li>
-                            <li><a href="tel:+2348012345678" className="hover:text-brand-gold">+234 801 234 5678</a></li>
-                            <li>Lagos, Nigeria</li>
+                            <li><a href="tel:+2348052444482" className="hover:text-brand-gold">+234 805 244 4482</a></li>
+                            <li>Kano Municipal, Nigeria</li>
                         </ul>
                     </div>
                     <div>
