@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { SERVICES } from '../constants';
 import AnimatedPage from '../components/AnimatedPage';
 import AnimatedSection from '../components/AnimatedSection';
+import SectionTitle from '../components/SectionTitle';
 import CallToAction from '../components/CallToAction';
 
 const containerVariants = {
@@ -10,40 +11,15 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.2,
     },
   },
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)"
-  },
+  visible: { opacity: 1, y: 0 },
 };
-
-const ServiceCard: React.FC<{ service: typeof SERVICES[0] }> = ({ service }) => (
-    <motion.div 
-      className="bg-white p-8 rounded-lg text-center"
-      variants={itemVariants}
-      whileHover={{ 
-        y: -5, 
-        scale: 1.02, 
-        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" 
-      }}
-      transition={{ type: 'spring', stiffness: 300 }}
-    >
-        <div className="flex justify-center mb-6">
-            <div className="bg-brand-gold/10 p-4 rounded-full inline-flex">
-                {service.icon}
-            </div>
-        </div>
-        <h3 className="text-2xl font-bold text-brand-green mb-4">{service.name}</h3>
-        <p className="text-gray-600">{service.description}</p>
-    </motion.div>
-);
 
 const ServicesPage: React.FC = () => {
   return (
@@ -51,34 +27,36 @@ const ServicesPage: React.FC = () => {
       <AnimatedSection>
         <section className="bg-brand-green text-white py-20">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl font-bold">Our Services</h1>
-            <p className="text-xl mt-4 max-w-3xl mx-auto">Providing comprehensive, end-to-end solutions for the global agro-commodity trade.</p>
+            <h1 className="text-4xl font-bold">Our End-to-End Export Solutions</h1>
+            <p className="text-xl mt-4 max-w-3xl mx-auto">We provide comprehensive services to ensure a seamless experience from farm to port.</p>
           </div>
         </section>
       </AnimatedSection>
-      
-      <AnimatedSection className="py-20 bg-brand-light">
+
+      <AnimatedSection className="py-20">
         <div className="container mx-auto px-4">
+          <SectionTitle>What We Do</SectionTitle>
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-10"
+            className="grid grid-cols-1 md:grid-cols-2 gap-12"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {SERVICES.map(service => (
-                <ServiceCard key={service.id} service={service} />
+            {SERVICES.map((service) => (
+              <motion.div 
+                key={service.id}
+                className="flex items-start space-x-6"
+                variants={itemVariants}
+              >
+                <div className="flex-shrink-0">{service.icon}</div>
+                <div>
+                  <h3 className="text-2xl font-bold text-brand-green mb-2">{service.name}</h3>
+                  <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                </div>
+              </motion.div>
             ))}
           </motion.div>
-        </div>
-      </AnimatedSection>
-
-      <AnimatedSection className="py-20">
-        <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold text-brand-green mb-4">A Partner You Can Trust</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                From the farm gate to the destination port, our team manages every detail with precision and care. We handle complex logistics, ensure stringent quality standards, and provide all necessary documentation to facilitate a smooth and efficient transaction for our clients. Your success is our priority.
-            </p>
         </div>
       </AnimatedSection>
 

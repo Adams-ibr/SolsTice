@@ -1,18 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { STATS } from '../constants';
+import { STATS, TEAM_MEMBERS } from '../constants';
 import FaqItem from '../components/FaqItem';
 import AnimatedPage from '../components/AnimatedPage';
 import AnimatedSection from '../components/AnimatedSection';
-import AnimatedStat from '../components/AnimatedStat';
 import SectionTitle from '../components/SectionTitle';
+import { LinkedInIcon, TwitterIcon } from '../components/icons';
 
-
-const TEAM_MEMBERS = [
-    { name: 'Adewale Adebayo', role: 'Founder & CEO', imageUrl: 'https://picsum.photos/seed/ceo/300/300' },
-    { name: 'Ngozi Okoro', role: 'Head of Operations', imageUrl: 'https://picsum.photos/seed/ops/300/300' },
-    { name: 'Musa Ibrahim', role: 'Lead, Sourcing & Logistics', imageUrl: 'https://picsum.photos/seed/logistics/300/300' },
-];
 
 const FAQS = [
     { q: 'What products do you specialize in?', a: 'We specialize in a range of premium Nigerian agricultural commodities, including Raw Cashew Nuts, Dried Split Ginger, Sesame Seeds, and Soybeans, among others.' },
@@ -65,7 +59,7 @@ const AboutPage: React.FC = () => {
               </p>
             </div>
             <div>
-              <img src="https://picsum.photos/seed/team/600/400" alt="Farmers in a field" className="rounded-lg shadow-xl" loading="lazy" />
+              <img src="https://picsum.photos/seed/farmers/600/400" alt="Farmers in a field" className="rounded-lg shadow-xl" loading="lazy" />
             </div>
           </div>
         </section>
@@ -73,17 +67,16 @@ const AboutPage: React.FC = () => {
       
       <section className="bg-brand-light py-16">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <div 
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
           >
             {STATS.map((stat, index) => (
-              <AnimatedStat key={index} value={stat.value} label={stat.label} />
+              <div key={index}>
+                  <p className="text-4xl font-bold text-brand-gold">{stat.value}</p>
+                  <p className="mt-2 text-gray-600">{stat.label}</p>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -101,7 +94,7 @@ const AboutPage: React.FC = () => {
               <motion.div 
                 key={member.name} 
                 variants={itemVariants}
-                className="bg-white rounded-lg p-6"
+                className="bg-white rounded-lg p-6 group relative"
                 whileHover={{ 
                   y: -5, 
                   scale: 1.02, 
@@ -109,7 +102,17 @@ const AboutPage: React.FC = () => {
                 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <img className="w-40 h-40 rounded-full mx-auto object-cover mb-4" src={member.imageUrl} alt={member.name} />
+                <div className="relative">
+                    <img className="w-40 h-40 rounded-full mx-auto object-cover mb-4 transition-all duration-300 group-hover:blur-sm" src={member.imageUrl} alt={member.name} />
+                    <div className="absolute inset-0 flex justify-center items-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="bg-white/80 p-3 rounded-full text-brand-green hover:text-brand-gold transition-colors">
+                            <LinkedInIcon className="w-6 h-6" />
+                        </a>
+                        <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" className="bg-white/80 p-3 rounded-full text-brand-green hover:text-brand-gold transition-colors">
+                            <TwitterIcon className="w-6 h-6" />
+                        </a>
+                    </div>
+                </div>
                 <h3 className="text-xl font-bold text-brand-green">{member.name}</h3>
                 <p className="text-gray-500">{member.role}</p>
               </motion.div>

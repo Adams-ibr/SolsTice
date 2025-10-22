@@ -19,25 +19,23 @@ const itemVariants = {
 const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
   return (
     <motion.div 
-      className="bg-white rounded-lg overflow-hidden group flex flex-col"
+      className="bg-white rounded-lg overflow-hidden group"
       variants={itemVariants}
       whileHover={{ 
         y: -5, 
         scale: 1.02, 
-        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
+        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" 
       }}
       transition={{ type: 'spring', stiffness: 300 }}
     >
       <img className="w-full h-56 object-cover object-center" src={post.imageUrl} alt={post.title} loading="lazy" />
-      <div className="p-6 flex flex-col flex-grow">
-        <p className="text-sm text-gray-500 mb-2">{post.publishDate} • by {post.author}</p>
-        <h3 className="text-xl font-bold text-brand-green mb-3 group-hover:text-brand-gold transition-colors">{post.title}</h3>
-        <p className="text-gray-600 text-base mb-4 flex-grow">{post.excerpt}</p>
-        <div className="mt-auto">
-            <Link to={`/blog/${post.slug}`} className="inline-block bg-brand-gold text-white font-bold py-2 px-4 rounded-md hover:bg-opacity-90 transition-colors">
-                Read More
-            </Link>
-        </div>
+      <div className="p-6">
+        <p className="text-sm text-gray-500 mb-2">{post.publishDate}</p>
+        <h3 className="text-xl font-bold text-brand-green mb-2 h-14 overflow-hidden">{post.title}</h3>
+        <p className="text-gray-600 text-base mb-4 line-clamp-3">{post.excerpt}</p>
+        <Link to={`/blog/${post.slug}`} className="text-brand-gold font-semibold hover:underline">
+          Read More &rarr;
+        </Link>
       </div>
     </motion.div>
   );

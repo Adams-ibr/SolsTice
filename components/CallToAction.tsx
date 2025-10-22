@@ -1,30 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import AnimatedSection from './AnimatedSection';
 
 const CallToAction: React.FC = () => {
-    return (
-        <section className="bg-brand-gold text-white">
-            <div className="container mx-auto px-4 py-20 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <h2 className="text-3xl font-bold mb-4">Ready to Source Your Agro-Commodities?</h2>
-                    <p className="text-lg max-w-2xl mx-auto mb-8">
-                        Contact our team today for a competitive quote and discover the SolsTice difference.
-                    </p>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Link to="/contact" className="inline-block bg-white text-brand-gold hover:bg-gray-200 font-bold py-3 px-8 rounded-md text-lg transition-colors">
-                            Contact Us Today
-                        </Link>
-                    </motion.div>
-                </motion.div>
-            </div>
-        </section>
-    );
+  return (
+    <AnimatedSection className="bg-brand-dark">
+      <div className="container mx-auto px-4 py-20 text-center">
+        <h2 className="text-3xl font-bold text-white mb-4">Ready to Source Premium Agro-Commodities?</h2>
+        <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+          Let us be your trusted partner in connecting you with the best of African agriculture. Contact us today for a quote or to discuss your specific needs.
+        </p>
+        <Link 
+          to="/contact" 
+          className="bg-brand-gold text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-600 transition-transform transform hover:scale-105"
+        >
+          Contact Us Now
+        </Link>
+      </div>
+    </AnimatedSection>
+  );
 };
 
 export default CallToAction;
