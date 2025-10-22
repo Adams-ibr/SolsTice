@@ -5,6 +5,7 @@ import AnimatedPage from '../components/AnimatedPage';
 import AnimatedSection from '../components/AnimatedSection';
 import SectionTitle from '../components/SectionTitle';
 import CallToAction from '../components/CallToAction';
+import ExportProcessFlow from '../components/ExportProcessFlow';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -49,15 +50,21 @@ const ServicesPage: React.FC = () => {
                 className="flex items-start space-x-6"
                 variants={itemVariants}
               >
-                <div className="flex-shrink-0">{service.icon}</div>
+                <div className="flex-shrink-0">
+                  <service.icon className="h-12 w-12 text-brand-gold" />
+                </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-brand-green mb-2">{service.name}</h3>
-                  <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                  <h3 className="text-2xl font-bold text-brand-green dark:text-gray-100 mb-2">{service.name}</h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{service.description}</p>
                 </div>
               </motion.div>
             ))}
           </motion.div>
         </div>
+      </AnimatedSection>
+
+      <AnimatedSection className="py-20 bg-brand-light dark:bg-gray-800">
+        <ExportProcessFlow />
       </AnimatedSection>
 
       <CallToAction />

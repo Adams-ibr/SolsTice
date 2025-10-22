@@ -27,12 +27,12 @@ const ProductDetailPage: React.FC = () => {
 
   return (
     <AnimatedPage>
-        <div className="pt-24 bg-brand-light">
+        <div className="pt-24 bg-brand-light dark:bg-gray-800">
              <div className="container mx-auto px-4">
                  <Breadcrumbs />
             </div>
         </div>
-      <AnimatedSection className="py-20 bg-brand-light">
+      <AnimatedSection className="py-20 bg-brand-light dark:bg-gray-800">
         <div className="container mx-auto px-4">
           {/* Use lg for two-column breakpoint for better tablet view */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
@@ -46,7 +46,7 @@ const ProductDetailPage: React.FC = () => {
                 {[product.imageUrl, ...product.gallery].map((img, idx) => (
                   <div 
                     key={idx}
-                    className={`w-20 h-20 rounded-md cursor-pointer border-2 transition-all overflow-hidden ${mainImage === img ? 'border-brand-gold scale-105' : 'border-transparent hover:border-gray-300'}`}
+                    className={`w-20 h-20 rounded-md cursor-pointer border-2 transition-all overflow-hidden ${mainImage === img ? 'border-brand-gold scale-105' : 'border-transparent hover:border-gray-300 dark:hover:border-gray-600'}`}
                     onClick={() => setMainImage(img)}
                   >
                     <img 
@@ -61,47 +61,47 @@ const ProductDetailPage: React.FC = () => {
 
             {/* Product Details */}
             <div className="flex flex-col">
-              <h1 className="text-3xl md:text-4xl font-bold text-brand-green mb-2">{product.name}</h1>
-              <p className="text-gray-500 mb-4">Origin: {product.origin}</p>
-              <p className="text-gray-600 mb-6 leading-relaxed">{product.description}</p>
+              <h1 className="text-3xl md:text-4xl font-bold text-brand-green dark:text-gray-100 mb-2">{product.name}</h1>
+              <p className="text-gray-500 dark:text-gray-400 mb-4">Origin: {product.origin}</p>
+              <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{product.description}</p>
               
               <div className="mb-6">
-                <span className="text-3xl font-bold text-brand-green">{product.pricePerTon}</span>
-                <span className="text-gray-500"> / Metric Ton</span>
+                <span className="text-3xl font-bold text-brand-green dark:text-gray-100">{product.pricePerTon}</span>
+                <span className="text-gray-500 dark:text-gray-400"> / Metric Ton</span>
               </div>
 
               {/* Improved visual hierarchy for specifications */}
-              <div className="border-t pt-6">
-                <h3 className="text-xl font-semibold text-brand-green mb-4">Product Specifications</h3>
-                <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-gray-700">
+              <div className="border-t dark:border-gray-700 pt-6">
+                <h3 className="text-xl font-semibold text-brand-green dark:text-gray-200 mb-4">Product Specifications</h3>
+                <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-gray-700 dark:text-gray-300">
                   {product.specifications.map(spec => (
-                    <div key={spec.key} className="flex justify-between border-b pb-2">
-                        <dt className="font-medium text-gray-800">{spec.key}</dt>
-                        <dd className="text-gray-600 text-right">{spec.value}</dd>
+                    <div key={spec.key} className="flex justify-between border-b dark:border-gray-700 pb-2">
+                        <dt className="font-medium text-gray-800 dark:text-gray-200">{spec.key}</dt>
+                        <dd className="text-gray-600 dark:text-gray-400 text-right">{spec.value}</dd>
                     </div>
                   ))}
-                  <div className="flex justify-between border-b pb-2">
-                      <dt className="font-medium text-gray-800">Harvest Season</dt>
-                      <dd className="text-gray-600 text-right">{product.harvestSeason}</dd>
+                  <div className="flex justify-between border-b dark:border-gray-700 pb-2">
+                      <dt className="font-medium text-gray-800 dark:text-gray-200">Harvest Season</dt>
+                      <dd className="text-gray-600 dark:text-gray-400 text-right">{product.harvestSeason}</dd>
                   </div>
                 </dl>
               </div>
 
               {/* Improved visual hierarchy for packaging */}
-              <div className="border-t pt-6 mt-6">
-                  <h3 className="text-xl font-semibold text-brand-green mb-4">Packaging & Shipping</h3>
-                  <div className="space-y-3 text-gray-700">
+              <div className="border-t dark:border-gray-700 pt-6 mt-6">
+                  <h3 className="text-xl font-semibold text-brand-green dark:text-gray-200 mb-4">Packaging & Shipping</h3>
+                  <div className="space-y-3 text-gray-700 dark:text-gray-300">
                       <div>
-                          <strong className="block mb-2 font-medium text-gray-800">Available Packaging:</strong>
+                          <strong className="block mb-2 font-medium text-gray-800 dark:text-gray-200">Available Packaging:</strong>
                           <div className="flex flex-wrap gap-2">
                               {product.packaging.map((pack, idx) => (
-                                  <span key={idx} className="bg-gray-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-full">{pack}</span>
+                                  <span key={idx} className="bg-gray-200 text-gray-800 text-sm font-medium px-3 py-1 rounded-full dark:bg-gray-700 dark:text-gray-200">{pack}</span>
                               ))}
                           </div>
                       </div>
                       <div className="flex justify-between">
-                          <strong className="font-medium text-gray-800">Shipping Terms:</strong> 
-                          <span className="text-gray-600">{product.shippingTerms}</span>
+                          <strong className="font-medium text-gray-800 dark:text-gray-200">Shipping Terms:</strong> 
+                          <span className="text-gray-600 dark:text-gray-400">{product.shippingTerms}</span>
                       </div>
                   </div>
               </div>

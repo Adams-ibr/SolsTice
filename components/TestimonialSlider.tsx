@@ -51,7 +51,7 @@ const TestimonialSlider: React.FC = () => {
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={page}
-          className="absolute w-full h-full flex flex-col justify-center items-center p-8 bg-brand-light rounded-lg"
+          className="absolute w-full h-full flex flex-col justify-center items-center p-8 bg-brand-light dark:bg-gray-800 rounded-lg"
           custom={direction}
           variants={sliderVariants}
           initial="enter"
@@ -73,9 +73,9 @@ const TestimonialSlider: React.FC = () => {
             }
           }}
         >
-            <p className="text-gray-600 italic text-center text-lg mb-6">"{testimonial.quote}"</p>
-            <div className="font-bold text-brand-green text-center">{testimonial.author}</div>
-            <div className="text-sm text-gray-500 text-center">{testimonial.company}</div>
+            <p className="text-gray-600 dark:text-gray-300 italic text-center text-lg mb-6">"{testimonial.quote}"</p>
+            <div className="font-bold text-brand-green dark:text-gray-100 text-center">{testimonial.author}</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400 text-center">{testimonial.company}</div>
         </motion.div>
       </AnimatePresence>
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
@@ -83,7 +83,7 @@ const TestimonialSlider: React.FC = () => {
           <button
             key={i}
             onClick={() => setPage([i, i > testimonialIndex ? 1 : -1])}
-            className={`w-3 h-3 rounded-full transition-colors ${i === (testimonialIndex < 0 ? TESTIMONIALS.length + testimonialIndex : testimonialIndex) ? 'bg-brand-gold' : 'bg-gray-300 hover:bg-gray-400'}`}
+            className={`w-3 h-3 rounded-full transition-colors ${i === (testimonialIndex < 0 ? TESTIMONIALS.length + testimonialIndex : testimonialIndex) ? 'bg-brand-gold' : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'}`}
             aria-label={`Go to slide ${i+1}`}
           />
         ))}

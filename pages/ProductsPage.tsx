@@ -37,7 +37,7 @@ const ProductsPage: React.FC = () => {
         </section>
       </AnimatedSection>
 
-      <AnimatedSection className="py-20 bg-brand-light">
+      <AnimatedSection className="py-20 bg-brand-light dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <SectionTitle>All Products</SectionTitle>
           {loading ? (

@@ -9,7 +9,7 @@ const Breadcrumbs: React.FC = () => {
         <nav aria-label="Breadcrumb" className="py-4">
             <ol className="flex items-center space-x-2 text-sm">
                 <li>
-                    <Link to="/" className="text-gray-500 hover:text-brand-green">Home</Link>
+                    <Link to="/" className="text-gray-500 hover:text-brand-green dark:text-gray-400 dark:hover:text-brand-gold">Home</Link>
                 </li>
                 {pathnames.map((value, index) => {
                     const to = `/${pathnames.slice(0, index + 1).join('/')}`;
@@ -18,11 +18,11 @@ const Breadcrumbs: React.FC = () => {
 
                     return (
                         <li key={to} className="flex items-center">
-                            <span className="text-gray-400 mx-2">/</span>
+                            <span className="text-gray-400 dark:text-gray-500 mx-2">/</span>
                             {isLast ? (
-                                <span className="text-brand-green font-semibold">{name}</span>
+                                <span className="text-brand-green font-semibold dark:text-gray-200">{name}</span>
                             ) : (
-                                <Link to={to} className="text-gray-500 hover:text-brand-green">{name}</Link>
+                                <Link to={to} className="text-gray-500 hover:text-brand-green dark:text-gray-400 dark:hover:text-brand-gold">{name}</Link>
                             )}
                         </li>
                     );

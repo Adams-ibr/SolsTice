@@ -19,7 +19,7 @@ const itemVariants = {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <motion.div 
-      className="bg-white rounded-lg overflow-hidden group"
+      className="bg-white rounded-lg overflow-hidden group dark:bg-gray-800 dark:border dark:border-gray-700"
       variants={itemVariants}
       whileHover={{ 
         y: -5, 
@@ -30,10 +30,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     >
       <img className="w-full h-56 object-cover object-center" src={product.imageUrl} alt={product.name} loading="lazy" />
       <div className="p-6">
-        <h3 className="text-xl font-bold text-brand-green mb-2">{product.name}</h3>
-        <p className="text-gray-600 text-base mb-4 line-clamp-3">{product.description}</p>
+        <h3 className="text-xl font-bold text-brand-green dark:text-gray-100 mb-2">{product.name}</h3>
+        <p className="text-gray-600 dark:text-gray-400 text-base mb-4 line-clamp-3">{product.description}</p>
         <div className="flex justify-between items-center">
-          <span className="text-lg font-semibold text-brand-green">{product.pricePerTon} <span className="text-sm font-normal text-gray-500">/ MT</span></span>
+          <span className="text-lg font-semibold text-brand-green dark:text-gray-200">{product.pricePerTon} <span className="text-sm font-normal text-gray-500 dark:text-gray-400">/ MT</span></span>
           <Link to={`/products/${product.slug}`} className="text-brand-gold font-semibold hover:underline">
             View Details &rarr;
           </Link>

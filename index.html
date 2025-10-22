@@ -10,6 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             colors: {
@@ -67,6 +68,18 @@
   }
   .prose a:hover {
     color: #D4AF37;
+  }
+  .dark .prose {
+    color: #d1d5db; /* gray-300 */
+  }
+  .dark .prose h3 {
+    color: #f3f4f6; /* gray-100 */
+  }
+  .dark .prose a {
+    color: #D4AF37;
+  }
+  .dark .prose a:hover {
+    color: #eab308; /* yellow-500 */
   }
 </style>
 </head>

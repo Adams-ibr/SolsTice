@@ -13,6 +13,9 @@ const initialCommodities: Commodity[] = [
     { name: 'Sesame Seeds', price: 1800, change: 2.3 },
     { name: 'Soybeans', price: 650, change: -0.75 },
     { name: 'Hibiscus Flower', price: 1500, change: 8.2 },
+    { name: 'Dried Chili Pepper', price: 2200, change: -3.1 },
+    { name: 'Gum Arabic', price: 3000, change: 1.5 },
+    { name: 'Peanuts', price: 950, change: 4.2 },
 ];
 
 const TrendArrow: React.FC<{ change: number }> = ({ change }) => {

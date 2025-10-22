@@ -54,11 +54,11 @@ const HomePage: React.FC = () => {
       <CommodityTicker />
 
       {/* Featured Products */}
-      <AnimatedSection className="py-20 bg-brand-light">
+      <AnimatedSection className="py-20 bg-brand-light dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <SectionTitle>Our Products</SectionTitle>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {PRODUCTS.slice(0, 4).map(product => (
+            {PRODUCTS.slice(0, 8).map(product => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -78,8 +78,8 @@ const HomePage: React.FC = () => {
             {SERVICES.map(service => (
               <div key={service.id} className="p-6">
                 <div className="flex justify-center mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold text-brand-green mb-2">{service.name}</h3>
-                <p className="text-gray-600">{service.description}</p>
+                <h3 className="text-xl font-bold text-brand-green dark:text-gray-100 mb-2">{service.name}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{service.description}</p>
               </div>
             ))}
           </div>

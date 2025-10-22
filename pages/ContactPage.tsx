@@ -47,8 +47,12 @@ const ContactPage: React.FC = () => {
             <SectionTitle>Contact Information</SectionTitle>
             <div className="space-y-4 text-lg">
               <p><strong>Address:</strong> 123 Commerce Way, Lagos, Nigeria</p>
-              <p><strong>Phone:</strong> <a href="tel:+2348012345678" className="text-brand-green hover:underline">+234 801 234 5678</a></p>
-              <p><strong>Email:</strong> <a href="mailto:info@solsticeagro.com" className="text-brand-green hover:underline">info@solsticeagro.com</a></p>
+              <p><strong>Phone:</strong> <a href="tel:+2348012345678" className="text-brand-green hover:underline dark:text-brand-gold">
++234 801 234 5678
+</a></p>
+              <p><strong>Email:</strong> <a href="mailto:info@solsticeagro.com" className="text-brand-green hover:underline dark:text-brand-gold">
+info@solsticeagro.com
+</a></p>
             </div>
              <div className="h-80 bg-gray-200 rounded-lg overflow-hidden">
                 <iframe
@@ -59,6 +63,7 @@ const ContactPage: React.FC = () => {
                     allowFullScreen={false}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
+                    className="dark:grayscale dark:invert"
                 ></iframe>
             </div>
           </div>

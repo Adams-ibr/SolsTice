@@ -50,11 +50,11 @@ const AboutPage: React.FC = () => {
         <section className="py-20">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-brand-green mb-4">Our Story</h2>
-              <p className="text-gray-600 mb-4">
+              <h2 className="text-3xl font-bold text-brand-green dark:text-gray-100 mb-4">Our Story</h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
                 SolsTice Agro Exports was founded with a clear mission: to create a transparent and efficient bridge between Nigerian farmers and the international market. We saw the immense potential of Africa's agricultural sector and were driven to unlock it by building a company grounded in fair trade, quality assurance, and exceptional customer service.
               </p>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 Over the years, we have grown into a trusted name in the agro-commodity trading industry, known for our unwavering commitment to our clients and our partner farmers. We are passionate about showcasing the best of African agriculture on the world stage.
               </p>
             </div>
@@ -65,7 +65,7 @@ const AboutPage: React.FC = () => {
         </section>
       </AnimatedSection>
       
-      <section className="bg-brand-light py-16">
+      <section className="bg-brand-light dark:bg-gray-800 py-16">
         <div className="container mx-auto px-4">
           <div 
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
@@ -73,7 +73,7 @@ const AboutPage: React.FC = () => {
             {STATS.map((stat, index) => (
               <div key={index}>
                   <p className="text-4xl font-bold text-brand-gold">{stat.value}</p>
-                  <p className="mt-2 text-gray-600">{stat.label}</p>
+                  <p className="mt-2 text-gray-600 dark:text-gray-400">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -94,7 +94,7 @@ const AboutPage: React.FC = () => {
               <motion.div 
                 key={member.name} 
                 variants={itemVariants}
-                className="bg-white rounded-lg p-6 group relative"
+                className="bg-white rounded-lg p-6 group relative dark:bg-gray-800 dark:border dark:border-gray-700"
                 whileHover={{ 
                   y: -5, 
                   scale: 1.02, 
@@ -105,23 +105,23 @@ const AboutPage: React.FC = () => {
                 <div className="relative">
                     <img className="w-40 h-40 rounded-full mx-auto object-cover mb-4 transition-all duration-300 group-hover:blur-sm" src={member.imageUrl} alt={member.name} />
                     <div className="absolute inset-0 flex justify-center items-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="bg-white/80 p-3 rounded-full text-brand-green hover:text-brand-gold transition-colors">
+                        <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="bg-white/80 p-3 rounded-full text-brand-green hover:text-brand-gold transition-colors dark:bg-gray-700/80">
                             <LinkedInIcon className="w-6 h-6" />
                         </a>
-                        <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" className="bg-white/80 p-3 rounded-full text-brand-green hover:text-brand-gold transition-colors">
+                        <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" className="bg-white/80 p-3 rounded-full text-brand-green hover:text-brand-gold transition-colors dark:bg-gray-700/80">
                             <TwitterIcon className="w-6 h-6" />
                         </a>
                     </div>
                 </div>
-                <h3 className="text-xl font-bold text-brand-green">{member.name}</h3>
-                <p className="text-gray-500">{member.role}</p>
+                <h3 className="text-xl font-bold text-brand-green dark:text-gray-100">{member.name}</h3>
+                <p className="text-gray-500 dark:text-gray-400">{member.role}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </AnimatedSection>
       
-      <AnimatedSection className="py-20 bg-brand-light">
+      <AnimatedSection className="py-20 bg-brand-light dark:bg-gray-800">
         <div className="container mx-auto px-4 max-w-3xl">
           <SectionTitle>Frequently Asked Questions</SectionTitle>
           <motion.div 

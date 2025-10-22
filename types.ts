@@ -1,4 +1,6 @@
-import * as React from 'react';
+// FIX: Changed React import to be consistent with the rest of the project, which resolves
+// the issue where standard JSX elements like 'div' were not being recognized.
+import React from 'react';
 
 // FIX: Moved Lottie player type definitions from Preloader.tsx to fix global JSX type issues.
 // This ensures the augmentation of JSX.IntrinsicElements happens in a global context

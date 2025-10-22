@@ -32,11 +32,11 @@ const InquiryPopup: React.FC<InquiryPopupProps> = ({ productName, onClose }) => 
         onClick={onClose}
       >
         <motion.div
-          className="bg-white rounded-lg p-8 w-full max-w-lg mx-4"
+          className="bg-white rounded-lg p-8 w-full max-w-lg mx-4 dark:bg-gray-800"
           variants={modalVariants}
           onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
         >
-          <h2 className="text-2xl font-bold text-brand-green mb-4">Inquiry for {productName}</h2>
+          <h2 className="text-2xl font-bold text-brand-green dark:text-gray-100 mb-4">Inquiry for {productName}</h2>
           <form className="space-y-4">
             <div>
               <Label htmlFor="inquiry-name">Full Name</Label>

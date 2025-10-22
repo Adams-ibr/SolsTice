@@ -13,6 +13,7 @@ import ContactPage from './pages/ContactPage';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './pages/BlogPostPage';
 import Preloader from './components/Preloader';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -45,7 +46,7 @@ function App() {
         transition={{ duration: 0.5 }}
       >
         <ScrollToTop />
-        <div className="bg-white text-gray-800 font-sans">
+        <div className="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200 font-sans">
           <Header />
           <main>
             <AnimatePresence mode="wait">
@@ -70,9 +71,11 @@ function App() {
 }
 
 const Root = () => (
-    <HashRouter>
-        <App />
-    </HashRouter>
+    <ThemeProvider>
+        <HashRouter>
+            <App />
+        </HashRouter>
+    </ThemeProvider>
 )
 
 export default Root;

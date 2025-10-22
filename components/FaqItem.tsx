@@ -16,11 +16,11 @@ const FaqItem: React.FC<FaqItemProps> = ({ question, answer }) => {
 
   return (
     <motion.div 
-        className="border-b border-gray-200 py-4 overflow-hidden"
+        className="border-b border-gray-200 dark:border-gray-700 py-4 overflow-hidden"
         variants={itemVariants}
     >
       <motion.button
-        className="w-full flex justify-between items-center text-left text-lg font-medium text-brand-green focus:outline-none"
+        className="w-full flex justify-between items-center text-left text-lg font-medium text-brand-green dark:text-gray-100 focus:outline-none"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
@@ -44,7 +44,7 @@ const FaqItem: React.FC<FaqItemProps> = ({ question, answer }) => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="mt-4 text-gray-600"
+            className="mt-4 text-gray-600 dark:text-gray-400"
           >
             <p className="pb-4">{answer}</p>
           </motion.div>
