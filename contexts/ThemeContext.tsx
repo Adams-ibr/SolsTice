@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -7,10 +8,10 @@ interface ThemeContextType {
   setTheme: (theme: Theme) => void;
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const ThemeContext = React.createContext<ThemeContextType | undefined>(undefined);
 
-export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(() => {
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [theme, setTheme] = React.useState<Theme>(() => {
     if (typeof window !== 'undefined') {
       const storedTheme = localStorage.getItem('theme');
       if (storedTheme === 'light' || storedTheme === 'dark') {
@@ -21,7 +22,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     return 'light';
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     const root = window.document.documentElement;
     root.classList.remove(theme === 'light' ? 'dark' : 'light');
     root.classList.add(theme);
@@ -36,7 +37,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 };
 
 export const useTheme = (): ThemeContextType => {
-  const context = useContext(ThemeContext);
+  const context = React.useContext(ThemeContext);
   if (context === undefined) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }

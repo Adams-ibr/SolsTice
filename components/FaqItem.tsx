@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface FaqItemProps {
@@ -12,7 +13,7 @@ const itemVariants = {
 };
 
 const FaqItem: React.FC<FaqItemProps> = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <motion.div 

@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import { motion, useInView, useSpring, useTransform } from 'framer-motion';
 
 interface Props {
@@ -12,7 +13,7 @@ const itemVariants = {
 };
 
 const AnimatedStat: React.FC<Props> = ({ value, label }) => {
-    const ref = useRef(null);
+    const ref = React.useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.5 });
     
     // Extract the numerical part and any suffix (like '+')
@@ -22,7 +23,7 @@ const AnimatedStat: React.FC<Props> = ({ value, label }) => {
     const spring = useSpring(0, { mass: 0.8, stiffness: 75, damping: 15 });
     const display = useTransform(spring, (current) => Math.round(current) + suffix);
     
-    useEffect(() => {
+    React.useEffect(() => {
         if (isInView) {
             spring.set(numericValue);
         }

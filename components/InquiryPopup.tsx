@@ -1,4 +1,5 @@
-import React from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/Button';
 import { Input } from './ui/Input';

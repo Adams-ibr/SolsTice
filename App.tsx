@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Header from './components/Header';
@@ -18,7 +19,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
@@ -27,9 +28,9 @@ const ScrollToTop = () => {
 
 function App() {
   const location = useLocation();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = React.useState(true);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2500); // Simulate loading time
     return () => clearTimeout(timer);
   }, []);

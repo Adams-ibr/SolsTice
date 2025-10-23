@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TESTIMONIALS } from '../constants';
 import type { Testimonial } from '../types';
@@ -30,7 +31,7 @@ const swipePower = (offset: number, velocity: number) => {
 };
 
 const TestimonialSlider: React.FC = () => {
-  const [[page, direction], setPage] = useState([0, 0]);
+  const [[page, direction], setPage] = React.useState([0, 0]);
 
   const testimonialIndex = page % TESTIMONIALS.length;
   const testimonial = TESTIMONIALS[testimonialIndex < 0 ? TESTIMONIALS.length + testimonialIndex : testimonialIndex];
@@ -39,7 +40,7 @@ const TestimonialSlider: React.FC = () => {
     setPage([page + newDirection, newDirection]);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     const interval = setInterval(() => {
       paginate(1);
     }, 5000); // Change testimonial every 5 seconds

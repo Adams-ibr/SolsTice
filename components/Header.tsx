@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { NAV_LINKS } from '../constants';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
 const Header: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
+    const [isOpen, setIsOpen] = React.useState(false);
+    const [isScrolled, setIsScrolled] = React.useState(false);
     const location = useLocation();
 
-    useEffect(() => {
+    React.useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10);
         };
@@ -17,7 +18,7 @@ const Header: React.FC = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    useEffect(() => {
+    React.useEffect(() => {
         setIsOpen(false);
     }, [location.pathname]);
 

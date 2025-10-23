@@ -1,4 +1,5 @@
-import React from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import { motion } from 'framer-motion';
 import { STATS, TEAM_MEMBERS } from '../constants';
 import FaqItem from '../components/FaqItem';
@@ -84,7 +85,7 @@ const AboutPage: React.FC = () => {
         <div className="container mx-auto px-4 text-center">
           <SectionTitle>Meet Our Leadership</SectionTitle>
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"

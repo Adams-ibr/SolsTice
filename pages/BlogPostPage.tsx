@@ -1,4 +1,5 @@
-import React from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { BLOG_POSTS } from '../constants';
 import AnimatedPage from '../components/AnimatedPage';

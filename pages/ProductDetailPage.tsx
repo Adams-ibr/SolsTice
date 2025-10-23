@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { PRODUCTS } from '../constants';
 import AnimatedPage from '../components/AnimatedPage';
@@ -10,7 +11,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 const ProductDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const product = PRODUCTS.find(p => p.slug === slug);
-  const [showInquiry, setShowInquiry] = useState(false);
+  const [showInquiry, setShowInquiry] = React.useState(false);
 
   if (!product) {
     return (
@@ -23,7 +24,7 @@ const ProductDetailPage: React.FC = () => {
     );
   }
 
-  const [mainImage, setMainImage] = useState(product.imageUrl);
+  const [mainImage, setMainImage] = React.useState(product.imageUrl);
 
   return (
     <AnimatedPage>

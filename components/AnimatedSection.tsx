@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import { motion, useInView } from 'framer-motion';
 
 interface Props {
@@ -8,7 +9,7 @@ interface Props {
 }
 
 const AnimatedSection: React.FC<Props> = ({ children, className, delay = 0 }) => {
-  const ref = useRef(null);
+  const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (

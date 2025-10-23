@@ -1,4 +1,5 @@
-import React from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import AnimatedPage from '../components/AnimatedPage';
 import AnimatedSection from '../components/AnimatedSection';
 import SectionTitle from '../components/SectionTitle';

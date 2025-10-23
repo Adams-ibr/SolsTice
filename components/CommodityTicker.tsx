@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import { motion } from 'framer-motion';
 
 interface Commodity {
@@ -28,9 +29,9 @@ const TrendArrow: React.FC<{ change: number }> = ({ change }) => {
 };
 
 const CommodityTicker: React.FC = () => {
-    const [commodities, setCommodities] = useState(initialCommodities);
+    const [commodities, setCommodities] = React.useState(initialCommodities);
 
-    useEffect(() => {
+    React.useEffect(() => {
         const interval = setInterval(() => {
             setCommodities(prev => prev.map(c => {
                 const change = (Math.random() - 0.5) * (c.price * 0.01);

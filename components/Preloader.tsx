@@ -1,11 +1,12 @@
-import React, { useRef, useEffect } from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import { motion } from 'framer-motion';
 import type { LottiePlayerElement } from '../types';
 
 const Preloader: React.FC = () => {
-    const playerRef = useRef<LottiePlayerElement>(null);
+    const playerRef = React.useRef<LottiePlayerElement>(null);
 
-    useEffect(() => {
+    React.useEffect(() => {
         // Find the animation data from the script tag in index.html
         const animationDataScript = document.getElementById('lottie-animation');
         if (animationDataScript) {

@@ -1,4 +1,5 @@
-import React from 'react';
+// FIX: Using a namespace import for React to solve JSX intrinsic element type errors.
+import * as React from 'react';
 import type { Product, BlogPost, NavLink, Stat, Service, Testimonial, TeamMember } from './types';
 import { SourcingIcon, LogisticsIcon, QualityIcon, ExportIcon } from './components/icons';
 
@@ -211,10 +212,10 @@ export const BLOG_POSTS: BlogPost[] = [
 ];
 
 export const STATS: Stat[] = [
-    { value: '10+', label: 'Years of Experience' },
+    { value: '1+', label: 'Years of Experience' },
     { value: '5000+', label: 'Metric Tons Exported' },
     { value: '20+', label: 'Countries Served' },
-    { value: '100%', label: 'Customer Satisfaction' },
+    { value: '2023', label: 'Established' },
 ];
 
 export const SERVICES: Service[] = [
@@ -231,7 +232,8 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [
-    { name: 'Adewale Adebayo', role: 'Founder & CEO', imageUrl: 'https://picsum.photos/seed/ceo/300/300', socials: { linkedin: 'https://linkedin.com', twitter: 'https://twitter.com' } },
-    { name: 'Ngozi Okoro', role: 'Head of Operations', imageUrl: 'https://picsum.photos/seed/operations/300/300', socials: { linkedin: 'https://linkedin.com', twitter: 'https://twitter.com' } },
-    { name: 'Musa Ibrahim', role: 'Lead, Sourcing & Logistics', imageUrl: 'https://picsum.photos/seed/logistics/300/300', socials: { linkedin: 'https://linkedin.com', twitter: 'https://twitter.com' } },
+    { name: 'Dr. Aliu Yamah', role: 'Chairman', imageUrl: 'https://picsum.photos/seed/chairman/300/300', socials: { linkedin: 'https://linkedin.com', twitter: 'https://twitter.com' } },
+    { name: 'Muhammad Hamza', role: 'MD/CEO', imageUrl: 'https://picsum.photos/seed/md-ceo/300/300', socials: { linkedin: 'https://linkedin.com', twitter: 'https://twitter.com' } },
+    { name: 'Abubakar S Abdullahi', role: 'Director', imageUrl: 'https://picsum.photos/seed/director/300/300', socials: { linkedin: 'https://linkedin.com', twitter: 'https://twitter.com' } },
+    { name: 'Usman Abdullahi', role: 'Secretary', imageUrl: 'https://picsum.photos/seed/secretary/300/300', socials: { linkedin: 'https://linkedin.com', twitter: 'https://twitter.com' } },
 ];
